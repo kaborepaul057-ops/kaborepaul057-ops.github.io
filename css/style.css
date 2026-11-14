@@ -1,54 +1,467 @@
 /* ==========================================================================
    Portfolio de Paul Kaboré — feuille de style
-   ÉTAPE 1 : socle minimal (variables + lisibilité). Le design complet
-   (typographie, en-tête, cartes, animations) arrive à l'étape 2.
+   Sommaire :
+     1. Polices          5. En-tête et menu      9. Compétences, intérêts
+     2. Variables        6. Accueil (hero)      10. Contact et pied de page
+     3. Base             7. Sections            11. Grands écrans
+     4. Boutons          8. Projets             12. Mouvements réduits
+   Approche « mobile d'abord » : les règles de base visent le téléphone,
+   les @media (min-width) ajoutent la mise en page des grands écrans.
    ========================================================================== */
 
-/* --- Variables (« tokens ») : on change une couleur ici, tout le site suit --- */
-:root {
-  --vert-900: #0b2e22;   /* vert très foncé : fonds sombres */
-  --vert-700: #0f3d2e;   /* vert foncé : couleur dominante */
-  --vert-500: #1d6b4f;
-  --orange-500: #e8862e; /* accent orange, utilisé avec parcimonie */
-  --creme: #f7f5ef;      /* fond clair, plus doux qu'un blanc pur */
-  --encre: #17211c;      /* texte principal */
-  --gris: #5a6660;       /* texte secondaire */
-
-  --largeur-max: 72rem;
-  --gouttiere: 1rem;     /* marge latérale minimale sur téléphone */
+/* --- 1. Polices (licence libre SIL OFL, fichiers dans assets/fonts) ---
+   Polices « variables » : un seul fichier contient toutes les graisses.
+   font-display: swap = le texte s'affiche tout de suite, même avant la police. */
+@font-face {
+  font-family: "Source Serif 4";
+  src: url("../assets/fonts/source-serif-4-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Source Sans 3";
+  src: url("../assets/fonts/source-sans-3-latin.woff2") format("woff2");
+  font-weight: 200 900;
+  font-display: swap;
 }
 
-/* --- Remise à zéro légère --- */
+/* --- 2. Variables : on change une valeur ici, tout le site suit --- */
+:root {
+  --vert-950: #08241b;   /* pied de page */
+  --vert-900: #0b2e22;   /* fonds sombres (accueil, contact) */
+  --vert-700: #0f3d2e;   /* couleur dominante */
+  --vert-500: #1d6b4f;
+  --vert-100: #e3eee8;   /* fonds de pastilles */
+  --orange-500: #e8862e; /* accent, utilisé avec parcimonie */
+  --orange-600: #c96f1d; /* orange plus foncé : lisible sur fond clair */
+  --creme: #f7f5ef;      /* fond clair, plus doux qu'un blanc pur */
+  --blanc: #ffffff;
+  --encre: #17211c;      /* texte principal */
+  --gris: #4f5b55;       /* texte secondaire (contraste suffisant sur crème) */
+  --clair-sur-vert: #cfe0d6;
+
+  --police-titre: "Source Serif 4", Georgia, "Noto Serif", serif;
+  --police-texte: "Source Sans 3", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --largeur-max: 70rem;
+  --gouttiere: 1rem;     /* marge latérale minimale sur téléphone */
+  --rayon: 18px;
+  --hauteur-entete: 3.75rem;
+  --ombre: 0 18px 40px rgba(8, 36, 27, .14);
+}
+
+/* --- 3. Base --- */
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+html {
+  scroll-behavior: smooth;
+  /* Un clic sur un lien du menu ne cache pas le titre sous l'en-tête fixe */
+  scroll-padding-top: calc(var(--hauteur-entete) + .5rem);
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  line-height: 1.6;
+  font-family: var(--police-texte);
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--encre);
   background: var(--creme);
+  overflow-x: hidden;
 }
+
 img { max-width: 100%; height: auto; display: block; }
 
-/* --- Accessibilité : lien « Aller au contenu » visible seulement au clavier --- */
+h1, h2, h3 {
+  font-family: var(--police-titre);
+  line-height: 1.15;
+  margin: 0 0 .75rem;
+  letter-spacing: -.01em;
+}
+
+a { color: var(--vert-500); text-underline-offset: .2em; }
+a:hover { color: var(--vert-700); }
+
+/* Contour visible au clavier, invisible au toucher (accessibilité) */
+:focus-visible {
+  outline: 3px solid var(--orange-500);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
 .skip-link {
-  position: absolute; left: -999px; top: 0;
-  background: var(--vert-700); color: #fff; padding: .5rem 1rem;
+  position: absolute; left: -999px; top: .5rem; z-index: 100;
+  background: var(--orange-500); color: var(--vert-950);
+  padding: .5rem 1rem; border-radius: 999px; font-weight: 700;
 }
 .skip-link:focus { left: var(--gouttiere); }
 
-/* --- Mise en page provisoire --- */
-.site-header, main > section, .site-footer {
-  max-width: var(--largeur-max);
-  margin: 0 auto;
-  padding: 1.5rem var(--gouttiere);
+/* Petit texte en capitales au-dessus des titres */
+.eyebrow {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--orange-600);
+  margin: 0 0 .5rem;
 }
-.hero-photo { margin: 0; max-width: 20rem; }
 
-/* Repère visuel des informations manquantes, pour qu'on ne les oublie pas */
+/* Repère des informations manquantes, pour ne pas les oublier */
 .placeholder {
-  color: #9a4b00;
+  color: #8a4300;
   background: #fff1e0;
   border: 1px dashed var(--orange-500);
-  padding: .25rem .5rem;
+  border-radius: 8px;
+  padding: .35rem .65rem;
+  font-size: .95rem;
+}
+
+/* --- 4. Boutons --- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.9rem;              /* zone tactile confortable (≥ 44 px) */
+  padding: .7rem 1.4rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .2s ease, background-color .2s ease, color .2s ease;
+}
+.btn:hover { transform: translateY(-2px); }
+.btn-primary { background: var(--orange-500); color: var(--vert-950); }
+.btn-primary:hover { background: #f19a48; color: var(--vert-950); }
+.btn-ghost { border-color: currentColor; color: var(--creme); }
+.btn-ghost:hover { background: rgba(247, 245, 239, .1); color: var(--blanc); }
+
+/* --- 5. En-tête et menu --- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  height: var(--hauteur-entete);
+  padding-inline: max(var(--gouttiere), (100% - var(--largeur-max)) / 2);
+  background: rgba(11, 46, 34, .94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(207, 224, 214, .12);
+}
+
+.brand {
+  font-family: var(--police-titre);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--creme);
+  text-decoration: none;
+  margin-right: auto;              /* pousse le reste à droite */
+  display: inline-flex;
+  align-items: baseline;
+}
+.brand:hover { color: var(--blanc); }
+.brand-dot {
+  width: .4rem; height: .4rem; margin-left: .15rem;
+  border-radius: 50%;
+  background: var(--orange-500);
+}
+
+/* Sélecteur de langue : deux boutons collés en pastille */
+.lang-switch {
+  display: inline-flex;
+  border: 1px solid rgba(207, 224, 214, .35);
+  border-radius: 999px;
+  padding: 2px;
+  order: 2;                        /* téléphone : avant le bouton Menu */
+}
+.lang-switch button {
+  font: 700 .8rem var(--police-texte);
+  letter-spacing: .05em;
+  min-width: 2.6rem;
+  min-height: 2.2rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--clair-sur-vert);
+  cursor: pointer;
+}
+.lang-switch button[aria-pressed="true"] { background: var(--creme); color: var(--vert-900); }
+
+.site-nav { order: 3; }
+
+.nav-toggle {
+  display: none;                   /* affiché seulement si JavaScript fonctionne */
+  min-height: 2.4rem;
+  padding: 0 1rem;
+  border: 1px solid rgba(207, 224, 214, .35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--creme);
+  font: 600 .95rem var(--police-texte);
+  cursor: pointer;
+}
+
+.nav-list { list-style: none; margin: 0; padding: 0; }
+.nav-list a {
+  display: block;
+  color: var(--creme);
+  text-decoration: none;
+  font-weight: 600;
+}
+.nav-list a:hover { color: var(--orange-500); }
+
+/* Sans JavaScript : liens toujours visibles, sur une ligne qui défile */
+html:not(.js) .site-header { height: auto; flex-wrap: wrap; padding-block: .6rem; }
+html:not(.js) .nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
+
+/* Avec JavaScript, sur téléphone : menu déroulant sous l'en-tête */
+.js .nav-toggle { display: inline-block; }
+.js .nav-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  padding: .5rem var(--gouttiere) 1rem;
+  background: var(--vert-900);
+  border-bottom: 1px solid rgba(207, 224, 214, .12);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, .25);
+  /* Fermé : invisible et non cliquable, avec une petite glissade à l'ouverture */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-.5rem);
+  transition: opacity .2s ease, transform .2s ease, visibility 0s linear .2s;
+}
+.js .nav-list a { padding: .8rem 0; border-bottom: 1px solid rgba(207, 224, 214, .1); }
+.js .nav-list li:last-child a { border-bottom: 0; }
+.js .site-header.menu-ouvert .nav-list {
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition: opacity .2s ease, transform .2s ease;
+}
+
+/* --- 6. Accueil (hero) --- */
+.hero {
+  display: grid;
+  grid-template-areas: "texte" "photo" "actions";
+  gap: 1.75rem;
+  padding-top: 2.5rem;
+  padding-bottom: 3.5rem;
+  background:
+    radial-gradient(120% 60% at 100% 0%, rgba(29, 107, 79, .45), transparent 60%),
+    var(--vert-900);
+  color: var(--creme);
+}
+.hero-text { grid-area: texte; }
+.hero h1 { font-size: clamp(2.6rem, 9vw, 4.4rem); margin-bottom: .35rem; }
+.hero .eyebrow { color: var(--orange-500); }
+.hero-role {
+  font-size: 1.15rem;
+  color: var(--clair-sur-vert);
+  margin: 0 0 1rem;
+}
+.hero-pitch { color: var(--clair-sur-vert); max-width: 34rem; margin: 0; }
+
+/* Photo dans un cadre arrondi, avec un contour orange décalé derrière (aperçu A) */
+.hero-photo {
+  grid-area: photo;
+  position: relative;
+  width: min(100% - 1rem, 20rem);
+  margin: 0 auto;
+}
+.hero-photo::before {
+  content: "";
+  position: absolute;
+  inset: .9rem -.9rem -.9rem .9rem;
+  border: 2px solid var(--orange-500);
+  border-radius: var(--rayon);
+}
+.hero-photo img {
+  position: relative;
+  border-radius: var(--rayon);
+  box-shadow: 0 22px 44px rgba(0, 0, 0, .4);
+}
+
+.hero-actions {
+  grid-area: actions;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  padding-top: .5rem;
+}
+
+/* --- 7. Sections --- */
+/* Le fond va d'un bord à l'autre ; le contenu reste dans une colonne centrée.
+   max() choisit la plus grande marge : la gouttière ou l'espace autour de la colonne. */
+main > section,
+.site-footer {
+  padding-inline: max(var(--gouttiere), (100% - var(--largeur-max)) / 2);
+}
+main > section:not(.hero) { padding-block: 4rem; }
+main > section:nth-of-type(odd):not(.hero):not(#contact) { background: var(--blanc); }
+
+/* Titre de section avec un petit trait orange devant */
+main > section > h2 {
+  font-size: clamp(1.9rem, 6vw, 2.6rem);
+  display: flex;
+  align-items: flex-start;
+  gap: .75rem;
+}
+main > section > h2::before {
+  content: "";
+  flex: none;
+  margin-top: .58em;               /* aligné sur la première ligne si le titre passe sur deux */
+  width: 1.6rem;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--orange-500);
+}
+main > section > p { max-width: 42rem; color: var(--gris); }
+
+/* --- 8. Projets --- */
+.project-featured {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: var(--creme);
+  border: 1px solid rgba(15, 61, 46, .1);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+.project-featured > img {
+  width: 7.5rem;
+  padding: 1rem;
+  background: var(--blanc);
+  border-radius: var(--rayon);
+}
+.project-featured h3 { font-size: 1.8rem; }
+.project-featured p { color: var(--gris); }
+.project-featured ul { padding: 0; margin: 0 0 1.5rem; list-style: none; }
+.project-featured li { position: relative; padding-left: 1.4rem; margin-bottom: .4rem; }
+.project-featured li::before {
+  content: "";
+  position: absolute; left: 0; top: .62em;
+  width: .5rem; height: .5rem;
+  border-radius: 50%;
+  background: var(--vert-500);
+}
+
+/* --- 9. Compétences et centres d'intérêt --- */
+.skills {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 1.5rem 0;
+  list-style: none;
+}
+.skills li {
+  padding: .9rem 1.1rem;
+  background: var(--creme);
+  border-left: 3px solid var(--vert-500);
+  border-radius: 10px;
+  color: var(--gris);
+}
+.skills strong { color: var(--encre); }
+
+.interests {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  list-style: none;
+}
+.interests li {
+  padding: .5rem 1rem;
+  background: var(--vert-100);
+  color: var(--vert-700);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+/* --- 10. Contact et pied de page --- */
+#contact { background: var(--vert-900); color: var(--creme); }
+#contact > p { color: var(--clair-sur-vert); }
+.contact-list {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  list-style: none;
+}
+.contact-list a {
+  display: flex;
+  align-items: center;
+  min-height: 3rem;
+  padding: .6rem 1.1rem;
+  border: 1px solid rgba(207, 224, 214, .25);
+  border-radius: 12px;
+  color: var(--creme);
+  text-decoration: none;
+  font-weight: 600;
+  overflow-wrap: anywhere;          /* une longue adresse ne déborde pas */
+}
+.contact-list a:hover { border-color: var(--orange-500); color: var(--blanc); }
+
+.site-footer {
+  padding-block: 1.5rem;
+  background: var(--vert-950);
+  color: var(--clair-sur-vert);
+  font-size: .9rem;
+}
+.site-footer p { margin: 0; }
+
+/* --- 11. Grands écrans --- */
+@media (min-width: 40rem) {             /* ≈ 640 px : grand téléphone couché, tablette */
+  .skills, .contact-list { grid-template-columns: repeat(2, 1fr); }
+  .project-featured { grid-template-columns: auto 1fr; align-items: start; padding: 2rem; }
+}
+
+@media (min-width: 56rem) {             /* ≈ 900 px : ordinateur */
+  /* Le menu redevient une ligne de liens dans l'en-tête */
+  .js .nav-toggle { display: none; }
+  .js .nav-list,
+  .nav-list {
+    position: static;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    background: none;
+    border: 0;
+    box-shadow: none;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+  }
+  .js .nav-list a { padding: .25rem 0; border: 0; }
+  .site-nav { order: 1; margin-right: 1rem; }
+  .lang-switch { order: 2; }
+
+  /* Accueil : texte à gauche, photo à droite */
+  .hero {
+    grid-template-columns: 1.15fr .85fr;
+    grid-template-areas: "texte photo" "actions photo";
+    grid-template-rows: auto 1fr;
+    column-gap: 4rem;
+    align-items: start;
+    padding-top: 5rem;
+    padding-bottom: 6rem;
+  }
+  .hero-text { align-self: end; }
+  .hero-photo { width: 100%; max-width: 22rem; }
+  .skills { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* --- 12. Mouvements réduits ---
+   Si la personne a demandé moins d'animations dans les réglages du téléphone,
+   on les coupe toutes (confort et accessibilité). */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    transition-duration: .01ms !important;
+    animation-duration: .01ms !important;
+  }
 }

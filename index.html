@@ -22,7 +22,12 @@
   <meta name="theme-color" content="#0f3d2e">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Polices hébergées dans le site : préchargées pour éviter un changement de police visible -->
+  <link rel="preload" href="assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="css/style.css">
+  <!-- Signale au CSS que JavaScript fonctionne (sinon le menu reste toujours visible) -->
+  <script>document.documentElement.classList.add('js');</script>
   <!-- defer : les scripts s'exécutent après la lecture du HTML, sans bloquer l'affichage -->
   <script src="js/i18n.js" defer></script>
   <script src="js/script.js" defer></script>
@@ -32,7 +37,7 @@
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
 
   <header class="site-header">
-    <a class="brand" href="#accueil" aria-label="Paul Kaboré, retour en haut">PK</a>
+    <a class="brand" href="#accueil" aria-label="Paul Kaboré, retour en haut">PK<span class="brand-dot" aria-hidden="true"></span></a>
 
     <nav class="site-nav" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.label">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"
@@ -65,16 +70,17 @@
           Je conçois et développe Burkina Service, une plateforme qui met en relation
           la population, les professionnels et les entreprises du Burkina Faso.
         </p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href="#projets" data-i18n="hero.cta.projects">Voir mes projets</a>
-          <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Me contacter</a>
-        </div>
       </div>
       <figure class="hero-photo">
         <!-- width/height : le navigateur réserve la place, la page ne « saute » pas au chargement -->
         <img src="assets/img/paul-kabore.jpg" width="720" height="900"
              alt="Portrait de Paul Kaboré" data-i18n-attr="alt:hero.photoAlt">
       </figure>
+      <!-- Hors du bloc texte : sous la photo sur téléphone, sous le texte sur grand écran -->
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#projets" data-i18n="hero.cta.projects">Voir mes projets</a>
+        <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Me contacter</a>
+      </div>
     </section>
 
     <!-- 2. À PROPOS -->

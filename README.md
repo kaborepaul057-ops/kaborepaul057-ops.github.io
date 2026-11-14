@@ -16,6 +16,7 @@ paul-portfolio/
 ├── js/script.js          menu mobile, changement de langue, animations
 ├── assets/
 │   ├── favicon.svg       icône d'onglet
+│   ├── fonts/            polices libres (Source Serif 4, Source Sans 3 — licence OFL)
 │   └── img/              photo de Paul, logo Burkina Service
 ├── .nojekyll             dit à GitHub Pages de servir les fichiers tels quels
 └── README.md
@@ -40,7 +41,7 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
 ## Avancement
 
 - [x] Étape 1 — squelette et structure
-- [ ] Étape 2 — identité visuelle, en-tête, menu mobile
+- [x] Étape 2 — identité visuelle, en-tête, menu mobile
 - [ ] Étapes 3 à 6 — contenu des sections
 - [ ] Étape 7 — changement de langue
 - [ ] Étape 8 — animations légères
