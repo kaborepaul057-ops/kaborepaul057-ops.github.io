@@ -1,5 +1,7 @@
 # Portfolio de Paul Kaboré
 
+**En ligne : https://kaborepaul057-ops.github.io/**
+
 Site personnel bilingue (français / anglais) de Paul Kaboré, fondateur et développeur
 autodidacte de **Burkina Service**.
 
