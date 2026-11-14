@@ -501,38 +501,126 @@ main > section > p { max-width: 42rem; color: var(--gris); }
 .arch li > span:nth-of-type(1) { color: var(--orange-500); font-weight: 600; font-size: .95rem; }
 .arch li > span:nth-of-type(2) { font-size: .95rem; }
 
-/* --- 9. Compétences et centres d'intérêt --- */
+/* --- 9. Compétences, parcours, centres d'intérêt --- */
+.skill-groups { display: grid; gap: 1.25rem; margin-top: 1.5rem; }
+.skill-group {
+  padding: 1.5rem;
+  background: var(--blanc);
+  border: 1px solid rgba(15, 61, 46, .08);
+  border-radius: var(--rayon);
+}
+.skill-group h3 { font-size: 1.25rem; margin-bottom: .25rem; }
+.skill-group-note { color: var(--gris); margin: 0 0 1rem; font-size: .95rem; }
+/* Le groupe « en production » est mis en avant : liseré orange */
+.skill-group-main { border-top: 4px solid var(--orange-500); }
+
 .skills {
   display: grid;
-  gap: .75rem;
+  gap: .6rem;
   padding: 0;
-  margin: 1.5rem 0;
+  margin: 0;
   list-style: none;
 }
 .skills li {
-  padding: .9rem 1.1rem;
+  display: grid;
+  gap: .1rem;
+  padding: .85rem 1rem;
   background: var(--creme);
   border-left: 3px solid var(--vert-500);
   border-radius: 10px;
-  color: var(--gris);
 }
 .skills strong { color: var(--encre); }
+.skills span { color: var(--gris); font-size: .95rem; }
 
-.interests {
+/* Étiquettes (outils, apprentissage) */
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: .6rem;
+  gap: .5rem;
   padding: 0;
-  margin: 1.5rem 0 0;
+  margin: .75rem 0 0;
   list-style: none;
 }
-.interests li {
-  padding: .5rem 1rem;
+.tags li {
+  padding: .4rem .9rem;
   background: var(--vert-100);
   color: var(--vert-700);
   border-radius: 999px;
   font-weight: 600;
+  font-size: .95rem;
 }
+
+/* Frise chronologique : une ligne verticale, une pastille par étape */
+.timeline {
+  position: relative;
+  margin: 1.5rem 0 0;
+  padding: 0 0 0 1.75rem;
+  list-style: none;
+  max-width: 44rem;
+}
+.timeline::before {
+  content: "";
+  position: absolute;
+  left: .4rem;
+  top: .4rem;
+  bottom: .4rem;
+  width: 2px;
+  background: linear-gradient(var(--vert-500), var(--orange-500));
+}
+.timeline li { position: relative; padding-bottom: 1.75rem; }
+.timeline li:last-child { padding-bottom: 0; }
+.timeline li::before {
+  content: "";
+  position: absolute;
+  left: -1.75rem;
+  top: .3rem;
+  width: .95rem;
+  height: .95rem;
+  border-radius: 50%;
+  background: var(--blanc);
+  border: 3px solid var(--vert-500);
+}
+.timeline li:last-child::before { border-color: var(--orange-500); background: var(--orange-500); }
+.timeline-date {
+  margin: 0 0 .2rem;
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--orange-600);
+}
+.timeline-date.placeholder { display: inline-block; letter-spacing: 0; text-transform: none; }
+.timeline h3 { font-size: 1.2rem; margin-bottom: .25rem; }
+.timeline li > p:not(.timeline-date) { margin: 0; color: var(--gris); }
+
+/* Centres d'intérêt : cartes avec icône */
+.interest-cards {
+  display: grid;
+  gap: 1rem;
+  padding: 0;
+  margin: 1.5rem 0 0;
+  list-style: none;
+}
+.interest-cards li {
+  padding: 1.4rem;
+  background: var(--blanc);
+  border: 1px solid rgba(15, 61, 46, .08);
+  border-radius: var(--rayon);
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+.interest-cards li:hover { transform: translateY(-3px); box-shadow: var(--ombre); }
+.interest-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: .9rem;
+  border-radius: 12px;
+  background: var(--vert-900);
+  color: var(--orange-500);
+}
+.interest-cards h3 { font-size: 1.15rem; margin-bottom: .3rem; }
+.interest-cards p { margin: 0; color: var(--gris); font-size: .97rem; }
 
 /* --- 10. Contact et pied de page --- */
 #contact { background: var(--vert-900); color: var(--creme); }
@@ -568,7 +656,8 @@ main > section > p { max-width: 42rem; color: var(--gris); }
 
 /* --- 11. Grands écrans --- */
 @media (min-width: 40rem) {             /* ≈ 640 px : grand téléphone couché, tablette */
-  .skills, .contact-list { grid-template-columns: repeat(2, 1fr); }
+  .contact-list { grid-template-columns: repeat(2, 1fr); }
+  .interest-cards { grid-template-columns: repeat(2, 1fr); }
   .project-featured { padding: 2rem; }
   .project-head { grid-template-columns: auto 1fr; align-items: start; gap: 1.75rem; }
   .feature-grid, .arch { grid-template-columns: repeat(2, 1fr); }
@@ -615,7 +704,11 @@ main > section > p { max-width: 42rem; color: var(--gris); }
     position: sticky;
     top: calc(var(--hauteur-entete) + 1.5rem);
   }
-  .skills { grid-template-columns: repeat(3, 1fr); }
+  /* Compétences : production à gauche (2 lignes), outils et apprentissage à droite */
+  .skill-groups { grid-template-columns: 1.6fr 1fr; }
+  .skill-group-main { grid-row: span 2; }
+  .skill-groups { align-items: start; grid-template-rows: auto 1fr; }
+  .interest-cards { grid-template-columns: repeat(4, 1fr); }
   .feature-grid { grid-template-columns: repeat(3, 1fr); }
   .project-featured { padding: 2.5rem; }
   /* Ordinateur : les 4 captures côte à côte, sans défilement */

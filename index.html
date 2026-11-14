@@ -293,37 +293,119 @@
       </article>
     </section>
 
-    <!-- 4. COMPÉTENCES -->
+    <!-- 4. COMPÉTENCES
+         Pas de niveaux chiffrés : chaque technologie est classée selon ce qu'elle
+         a servi à construire (choix validé à l'étape 5). -->
     <section id="competences" aria-labelledby="skills-title">
       <h2 id="skills-title" data-i18n="skills.title">Compétences techniques</h2>
-      <p data-i18n="skills.intro">Technologies utilisées dans mon environnement de développement.</p>
-      <ul class="skills">
-        <li><strong>Flutter / Dart</strong> — <span data-i18n="skills.flutter">développement mobile</span></li>
-        <li><strong>Python</strong> — <span data-i18n="skills.python">backend</span></li>
-        <li><strong>PostgreSQL</strong> — <span data-i18n="skills.postgres">base de données</span></li>
-        <li><strong>Clever Cloud</strong> — <span data-i18n="skills.clever">hébergement</span></li>
-        <li><strong>Git &amp; GitHub</strong> — <span data-i18n="skills.git">gestion du code</span></li>
-        <li><strong>Termux</strong> — <span data-i18n="skills.termux">environnement de développement sur Android</span></li>
-        <li><strong>Android Studio</strong>, <strong>Visual Studio Code</strong> — <span data-i18n="skills.ide">éditeurs</span></li>
-      </ul>
-      <p class="placeholder">[À COMPLÉTER : ton niveau pour chaque technologie]</p>
+      <p data-i18n="skills.intro">
+        Les technologies sont classées selon ce qu'elles m'ont permis de construire.
+      </p>
+
+      <div class="skill-groups">
+        <div class="skill-group skill-group-main">
+          <h3 data-i18n="skills.prodTitle">Utilisées en production</h3>
+          <p class="skill-group-note" data-i18n="skills.prodNote">Elles font tourner Burkina Service.</p>
+          <ul class="skills">
+            <li><strong>Flutter / Dart</strong><span data-i18n="skills.flutter">Application mobile Android, état géré avec Riverpod, notifications Firebase</span></li>
+            <li><strong>Python / FastAPI</strong><span data-i18n="skills.python">Serveur et API, accès aux données avec SQLAlchemy</span></li>
+            <li><strong>PostgreSQL</strong><span data-i18n="skills.postgres">Base de données, migrations versionnées avec Alembic</span></li>
+            <li><strong>Clever Cloud</strong><span data-i18n="skills.clever">Hébergement du serveur et tâches planifiées</span></li>
+            <li><strong>Git, GitHub, GitHub Actions</strong><span data-i18n="skills.git">Historique du code, tests et compilation automatiques</span></li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3 data-i18n="skills.toolsTitle">Outils de travail</h3>
+          <ul class="tags">
+            <li>Termux</li>
+            <li>Visual Studio Code</li>
+            <li>Android Studio</li>
+            <li data-i18n="skills.aiAssistants">Assistants d'IA</li>
+          </ul>
+        </div>
+
+        <div class="skill-group">
+          <h3 data-i18n="skills.learningTitle">En apprentissage</h3>
+          <ul class="tags">
+            <li data-i18n="skills.learnAI">Intelligence artificielle</li>
+            <li data-i18n="skills.learnArch">Architecture logicielle</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
-    <!-- 5. PARCOURS D'APPRENTISSAGE -->
+    <!-- 5. PARCOURS D'APPRENTISSAGE
+         Dates vérifiées dans l'historique Git de Burkina Service le 14/11/2026.
+         <time datetime> : date lisible par les machines (moteurs de recherche). -->
     <section id="parcours" aria-labelledby="journey-title">
       <h2 id="journey-title" data-i18n="journey.title">Parcours d'apprentissage</h2>
-      <p class="placeholder">[À COMPLÉTER : les grandes étapes (année du premier code, premiers projets, sortie de Burkina Service sur Google Play…)]</p>
+      <ol class="timeline">
+        <li>
+          <p class="timeline-date placeholder">[À COMPLÉTER : année]</p>
+          <h3 data-i18n="journey.s1.title">Premiers pas en programmation</h3>
+          <p class="placeholder">[À COMPLÉTER : comment tu as commencé, avec quoi]</p>
+        </li>
+        <li>
+          <p class="timeline-date"><time datetime="2026-08" data-i18n="journey.s2.date">Août 2026</time></p>
+          <h3 data-i18n="journey.s2.title">Début de Burkina Service</h3>
+          <p data-i18n="journey.s2.text">Création du dépôt de code : application mobile en Flutter et serveur en Python.</p>
+        </li>
+        <li>
+          <p class="timeline-date"><time datetime="2026-09" data-i18n="journey.s3.date">Septembre 2026</time></p>
+          <h3 data-i18n="journey.s3.title">Automatisation et qualité</h3>
+          <p data-i18n="journey.s3.text">Tests automatiques du serveur et de l'application, compilation automatique des versions Android.</p>
+        </li>
+        <li>
+          <p class="timeline-date placeholder">[À COMPLÉTER : mois]</p>
+          <h3 data-i18n="journey.s4.title">Publication sur Google Play</h3>
+          <p data-i18n="journey.s4.text">L'application devient accessible au public.</p>
+        </li>
+        <li>
+          <p class="timeline-date"><time datetime="2026-10" data-i18n="journey.s5.date">Octobre 2026</time></p>
+          <h3 data-i18n="journey.s5.title">Ouverture aux entreprises</h3>
+          <p data-i18n="journey.s5.text">Fiches dédiées aux entreprises, analyse de sécurité automatique et boîte à idées intégrée à l'application.</p>
+        </li>
+        <li>
+          <p class="timeline-date"><time datetime="2026-11" data-i18n="journey.s6.date">Novembre 2026</time></p>
+          <h3 data-i18n="journey.s6.title">Aujourd'hui</h3>
+          <p data-i18n="journey.s6.text">Évolution continue de Burkina Service et apprentissage de l'intelligence artificielle et de l'architecture logicielle.</p>
+        </li>
+      </ol>
     </section>
 
-    <!-- 6. CENTRES D'INTÉRÊT -->
+    <!-- 6. CENTRES D'INTÉRÊT : descriptions tirées du texte « Mes ambitions » de Paul -->
     <section id="interets" aria-labelledby="interests-title">
       <h2 id="interests-title" data-i18n="interests.title">Centres d'intérêt technologiques</h2>
-      <ul class="interests">
-        <li data-i18n="interests.software">Développement logiciel</li>
-        <li data-i18n="interests.computing">Informatique</li>
-        <li data-i18n="interests.ai">Intelligence artificielle</li>
-        <li data-i18n="interests.startup">Entrepreneuriat technologique</li>
-        <li data-i18n="interests.space">Fusées et technologies spatiales</li>
+      <ul class="interest-cards">
+        <li>
+          <span class="interest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="5" width="14" height="14" rx="2"/><path d="M9 9h6v6H9zM9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg>
+          </span>
+          <h3 data-i18n="interests.ai.title">Intelligence artificielle</h3>
+          <p data-i18n="interests.ai.text">Comprendre et concevoir des systèmes intelligents.</p>
+        </li>
+        <li>
+          <span class="interest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2c3 2.5 4.5 6 4.5 10.5L14 16h-4l-2.5-3.5C7.5 8 9 4.5 12 2z"/><circle cx="12" cy="9" r="1.6"/><path d="M10 16l-1.5 4M14 16l1.5 4M12 16v5"/></svg>
+          </span>
+          <h3 data-i18n="interests.space.title">Technologies spatiales</h3>
+          <p data-i18n="interests.space.text">Exploration spatiale, satellites et technologies liées aux fusées.</p>
+        </li>
+        <li>
+          <span class="interest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20h18M6 16l4-5 3 3 5-7"/><path d="M14 7h4v4"/></svg>
+          </span>
+          <h3 data-i18n="interests.startup.title">Entrepreneuriat technologique</h3>
+          <p data-i18n="interests.startup.text">Des projets à impact concret, au Burkina Faso comme à l'international.</p>
+        </li>
+        <li>
+          <span class="interest-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg>
+          </span>
+          <h3 data-i18n="interests.software.title">Développement logiciel</h3>
+          <p data-i18n="interests.software.text">Informatique, programmation et architecture logicielle.</p>
+        </li>
       </ul>
     </section>
 
