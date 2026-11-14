@@ -625,38 +625,81 @@ main > section > p { max-width: 42rem; color: var(--gris); }
 /* --- 10. Contact et pied de page --- */
 #contact { background: var(--vert-900); color: var(--creme); }
 #contact > p { color: var(--clair-sur-vert); }
-.contact-list {
+.contact-cards { display: grid; gap: 1rem; margin-top: 1.75rem; }
+.contact-card {
   display: grid;
-  gap: .75rem;
-  padding: 0;
-  margin: 1.5rem 0 0;
-  list-style: none;
+  justify-items: start;
+  align-content: start;             /* contenu en haut même si la carte voisine est plus haute */
+  gap: .35rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(207, 224, 214, .2);
+  border-radius: var(--rayon);
+  background: rgba(247, 245, 239, .04);
+  transition: border-color .2s ease;
 }
-.contact-list a {
-  display: flex;
-  align-items: center;
-  min-height: 3rem;
-  padding: .6rem 1.1rem;
-  border: 1px solid rgba(207, 224, 214, .25);
+.contact-card:hover { border-color: var(--orange-500); }
+.contact-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin-bottom: .5rem;
   border-radius: 12px;
+  background: var(--orange-500);
+  color: var(--vert-950);
+}
+.contact-label {
+  margin: 0;
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--clair-sur-vert);
+}
+.contact-value {
+  font-size: 1.2rem;
+  font-weight: 700;
   color: var(--creme);
   text-decoration: none;
-  font-weight: 600;
   overflow-wrap: anywhere;          /* une longue adresse ne déborde pas */
 }
-.contact-list a:hover { border-color: var(--orange-500); color: var(--blanc); }
+.contact-value:hover { color: var(--orange-500); text-decoration: underline; }
+.contact-hint { margin: 0; color: var(--clair-sur-vert); font-size: .95rem; }
+
+/* Bouton « Copier » : caché sans JavaScript, car il en a besoin pour fonctionner */
+.btn-copy {
+  display: none;
+  margin-top: .5rem;
+  min-height: 2.5rem;
+  padding: .4rem 1rem;
+  border: 1px solid rgba(207, 224, 214, .35);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--creme);
+  font: 600 .9rem var(--police-texte);
+  cursor: pointer;
+}
+.js .btn-copy { display: inline-block; }
+.btn-copy:hover { border-color: var(--orange-500); color: var(--orange-500); }
+.copy-status { margin: 0; min-height: 1.3em; font-size: .9rem; color: var(--orange-500); }
 
 .site-footer {
-  padding-block: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  align-items: center;
+  padding-block: 1.75rem;
   background: var(--vert-950);
   color: var(--clair-sur-vert);
   font-size: .9rem;
 }
 .site-footer p { margin: 0; }
+.site-footer a { color: var(--creme); margin-left: auto; }
+.site-footer a:hover { color: var(--orange-500); }
 
 /* --- 11. Grands écrans --- */
 @media (min-width: 40rem) {             /* ≈ 640 px : grand téléphone couché, tablette */
-  .contact-list { grid-template-columns: repeat(2, 1fr); }
+  .contact-cards { grid-template-columns: repeat(2, 1fr); max-width: 48rem; }
   .interest-cards { grid-template-columns: repeat(2, 1fr); }
   .project-featured { padding: 2rem; }
   .project-head { grid-template-columns: auto 1fr; align-items: start; gap: 1.75rem; }

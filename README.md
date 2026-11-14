@@ -42,7 +42,7 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
 
 - [x] Étape 1 — squelette et structure
 - [x] Étape 2 — identité visuelle, en-tête, menu mobile
-- [ ] Étapes 3 à 6 — contenu des sections
+- [x] Étapes 3 à 6 — contenu des sections
 - [ ] Étape 7 — changement de langue
 - [ ] Étape 8 — animations légères
 - [ ] Étape 9 — vérifications (accessibilité, performances, affichage)
