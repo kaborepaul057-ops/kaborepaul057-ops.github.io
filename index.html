@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<!--
+  Portfolio de Paul Kaboré — page unique.
+  Le texte français est écrit ici (langue par défaut, lisible même sans JavaScript).
+  Chaque texte traduisible porte un attribut data-i18n="cle" : js/i18n.js contient
+  la version anglaise de chaque clé, et js/script.js fait le remplacement.
+  Les éléments marqués [À COMPLÉTER] attendent une information de Paul.
+-->
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Paul Kaboré — Fondateur et développeur autodidacte</title>
+  <meta name="description" content="Portfolio de Paul Kaboré, fondateur et développeur autodidacte de Burkina Service, plateforme de mise en relation au Burkina Faso.">
+  <meta name="author" content="Paul Kaboré">
+
+  <!-- Aperçu lors d'un partage (WhatsApp, LinkedIn, Facebook…) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Paul Kaboré — Fondateur et développeur autodidacte">
+  <meta property="og:description" content="Fondateur de Burkina Service. Flutter, Python, PostgreSQL.">
+  <meta property="og:image" content="assets/img/paul-kabore.jpg">
+  <meta name="theme-color" content="#0f3d2e">
+
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- defer : les scripts s'exécutent après la lecture du HTML, sans bloquer l'affichage -->
+  <script src="js/i18n.js" defer></script>
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <!-- Lien invisible qui apparaît au clavier : permet de sauter le menu (accessibilité) -->
+  <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
+
+  <header class="site-header">
+    <a class="brand" href="#accueil" aria-label="Paul Kaboré, retour en haut">PK</a>
+
+    <nav class="site-nav" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.label">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"
+              data-i18n="nav.menu">Menu</button>
+      <ul id="menu" class="nav-list">
+        <li><a href="#a-propos" data-i18n="nav.about">À propos</a></li>
+        <li><a href="#projets" data-i18n="nav.projects">Projets</a></li>
+        <li><a href="#competences" data-i18n="nav.skills">Compétences</a></li>
+        <li><a href="#parcours" data-i18n="nav.journey">Parcours</a></li>
+        <li><a href="#interets" data-i18n="nav.interests">Centres d'intérêt</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Sélecteur de langue : deux vrais boutons, l'actif est signalé par aria-pressed -->
+    <div class="lang-switch" role="group" aria-label="Langue / Language">
+      <button type="button" data-lang="fr" aria-pressed="true" lang="fr">FR</button>
+      <button type="button" data-lang="en" aria-pressed="false" lang="en">EN</button>
+    </div>
+  </header>
+
+  <main id="contenu">
+    <!-- 1. ACCUEIL -->
+    <section id="accueil" class="hero" aria-labelledby="hero-title">
+      <div class="hero-text">
+        <p class="eyebrow" data-i18n="hero.eyebrow">Burkina Faso</p>
+        <h1 id="hero-title">Paul Kaboré</h1>
+        <p class="hero-role" data-i18n="hero.role">Fondateur et développeur autodidacte</p>
+        <p class="hero-pitch" data-i18n="hero.pitch">
+          Je conçois et développe Burkina Service, une plateforme qui met en relation
+          la population, les professionnels et les entreprises du Burkina Faso.
+        </p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#projets" data-i18n="hero.cta.projects">Voir mes projets</a>
+          <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Me contacter</a>
+        </div>
+      </div>
+      <figure class="hero-photo">
+        <!-- width/height : le navigateur réserve la place, la page ne « saute » pas au chargement -->
+        <img src="assets/img/paul-kabore.jpg" width="720" height="900"
+             alt="Portrait de Paul Kaboré" data-i18n-attr="alt:hero.photoAlt">
+      </figure>
+    </section>
+
+    <!-- 2. À PROPOS -->
+    <section id="a-propos" aria-labelledby="about-title">
+      <h2 id="about-title" data-i18n="about.title">À propos</h2>
+      <p data-i18n="about.p1">
+        Développeur autodidacte, j'ai appris la programmation par la pratique, en construisant
+        un produit réel publié sur Google Play.
+      </p>
+      <p data-i18n="about.p2">
+        Je m'intéresse au développement logiciel, à l'intelligence artificielle,
+        à l'entrepreneuriat technologique et aux technologies spatiales.
+      </p>
+      <p class="placeholder">[À COMPLÉTER : quelques lignes sur ton histoire, si tu le souhaites]</p>
+    </section>
+
+    <!-- 3. PROJETS -->
+    <section id="projets" aria-labelledby="projects-title">
+      <h2 id="projects-title" data-i18n="projects.title">Projets</h2>
+      <article class="project project-featured" aria-labelledby="bs-title">
+        <img src="assets/img/burkina-service-logo.png" width="300" height="351"
+             alt="Logo de Burkina Service" data-i18n-attr="alt:projects.bs.logoAlt">
+        <div>
+          <p class="eyebrow" data-i18n="projects.bs.badge">Réalisation principale</p>
+          <h3 id="bs-title">Burkina Service</h3>
+          <p data-i18n="projects.bs.summary">
+            Plateforme numérique de mise en relation entre la population, les professionnels
+            et les entreprises au Burkina Faso. Application publiée sur Google Play.
+          </p>
+          <ul data-i18n-list="projects.bs.features">
+            <li>Rechercher des professionnels</li>
+            <li>Découvrir leurs profils et leurs réalisations</li>
+            <li>Contacter directement les prestataires</li>
+            <li>Donner de la visibilité aux entreprises</li>
+          </ul>
+          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.burkinaservice.app"
+             target="_blank" rel="noopener" data-i18n="projects.bs.play">Voir sur Google Play</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- 4. COMPÉTENCES -->
+    <section id="competences" aria-labelledby="skills-title">
+      <h2 id="skills-title" data-i18n="skills.title">Compétences techniques</h2>
+      <p data-i18n="skills.intro">Technologies utilisées dans mon environnement de développement.</p>
+      <ul class="skills">
+        <li><strong>Flutter / Dart</strong> — <span data-i18n="skills.flutter">développement mobile</span></li>
+        <li><strong>Python</strong> — <span data-i18n="skills.python">backend</span></li>
+        <li><strong>PostgreSQL</strong> — <span data-i18n="skills.postgres">base de données</span></li>
+        <li><strong>Clever Cloud</strong> — <span data-i18n="skills.clever">hébergement</span></li>
+        <li><strong>Git &amp; GitHub</strong> — <span data-i18n="skills.git">gestion du code</span></li>
+        <li><strong>Termux</strong> — <span data-i18n="skills.termux">environnement de développement sur Android</span></li>
+        <li><strong>Android Studio</strong>, <strong>Visual Studio Code</strong> — <span data-i18n="skills.ide">éditeurs</span></li>
+      </ul>
+      <p class="placeholder">[À COMPLÉTER : ton niveau pour chaque technologie]</p>
+    </section>
+
+    <!-- 5. PARCOURS D'APPRENTISSAGE -->
+    <section id="parcours" aria-labelledby="journey-title">
+      <h2 id="journey-title" data-i18n="journey.title">Parcours d'apprentissage</h2>
+      <p class="placeholder">[À COMPLÉTER : les grandes étapes (année du premier code, premiers projets, sortie de Burkina Service sur Google Play…)]</p>
+    </section>
+
+    <!-- 6. CENTRES D'INTÉRÊT -->
+    <section id="interets" aria-labelledby="interests-title">
+      <h2 id="interests-title" data-i18n="interests.title">Centres d'intérêt technologiques</h2>
+      <ul class="interests">
+        <li data-i18n="interests.software">Développement logiciel</li>
+        <li data-i18n="interests.computing">Informatique</li>
+        <li data-i18n="interests.ai">Intelligence artificielle</li>
+        <li data-i18n="interests.startup">Entrepreneuriat technologique</li>
+        <li data-i18n="interests.space">Fusées et technologies spatiales</li>
+      </ul>
+    </section>
+
+    <!-- 7. CONTACT -->
+    <section id="contact" aria-labelledby="contact-title">
+      <h2 id="contact-title" data-i18n="contact.title">Contact</h2>
+      <p data-i18n="contact.intro">Ouvert aux échanges avec des développeurs, fondateurs, entreprises et partenaires.</p>
+      <ul class="contact-list">
+        <li><a href="mailto:kaborepaul057@gmail.com">kaborepaul057@gmail.com</a></li>
+        <li><a href="https://wa.me/22664816018" target="_blank" rel="noopener">WhatsApp : +226 64 81 60 18</a></li>
+        <li class="placeholder">[À COMPLÉTER : LinkedIn]</li>
+        <li class="placeholder">[À COMPLÉTER : GitHub]</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Paul Kaboré</p>
+  </footer>
+</body>
+</html>
