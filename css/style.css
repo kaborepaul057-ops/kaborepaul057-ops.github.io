@@ -245,7 +245,7 @@ html:not(.js) .nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
 /* --- 6. Accueil (hero) --- */
 .hero {
   display: grid;
-  grid-template-areas: "texte" "photo" "actions";
+  grid-template-areas: "texte" "photo" "actions" "faits";
   gap: 1.75rem;
   padding-top: 2.5rem;
   padding-bottom: 3.5rem;
@@ -292,6 +292,28 @@ html:not(.js) .nav-list { display: flex; flex-wrap: wrap; gap: .25rem 1rem; }
   padding-top: .5rem;
 }
 
+/* Trois repères sous les boutons, séparés par un petit losange orange */
+.hero-facts {
+  grid-area: faits;
+  display: flex;
+  flex-direction: column;
+  gap: .45rem;
+  margin: 0;
+  padding: 1.25rem 0 0;
+  list-style: none;
+  border-top: 1px solid rgba(207, 224, 214, .15);
+  font-size: .95rem;
+  color: var(--clair-sur-vert);
+}
+.hero-facts li { display: flex; align-items: baseline; gap: .6rem; }
+.hero-facts li::before {
+  content: "";
+  flex: none;
+  width: .4rem; height: .4rem;
+  transform: rotate(45deg) translateY(-.1rem);
+  background: var(--orange-500);
+}
+
 /* --- 7. Sections --- */
 /* Le fond va d'un bord à l'autre ; le contenu reste dans une colonne centrée.
    max() choisit la plus grande marge : la gouttière ou l'espace autour de la colonne. */
@@ -319,6 +341,40 @@ main > section > h2::before {
   background: var(--orange-500);
 }
 main > section > p { max-width: 42rem; color: var(--gris); }
+
+/* --- À propos : texte + carte « En bref » --- */
+.about-grid { display: grid; gap: 2rem; margin-top: 1.5rem; }
+.about-text { max-width: 42rem; }
+.about-text p { color: var(--gris); margin: 0 0 1rem; }
+.about-text .about-lead {
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: var(--encre);
+}
+.about-text h3 { font-size: 1.3rem; margin-top: 2rem; }
+
+.about-card {
+  align-self: start;
+  padding: 1.5rem;
+  background: var(--vert-900);
+  color: var(--creme);
+  border-radius: var(--rayon);
+  box-shadow: var(--ombre);
+}
+.about-card h3 { font-size: 1.2rem; color: var(--orange-500); }
+.about-card dl { margin: 0; }
+.about-card dt {
+  margin-top: 1rem;
+  font-size: .75rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--clair-sur-vert);
+}
+.about-card dd { margin: .15rem 0 0; font-weight: 600; }
+.about-card a { color: var(--creme); }
+.about-card a:hover { color: var(--orange-500); }
 
 /* --- 8. Projets --- */
 .project-featured {
@@ -443,8 +499,8 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   /* Accueil : texte à gauche, photo à droite */
   .hero {
     grid-template-columns: 1.15fr .85fr;
-    grid-template-areas: "texte photo" "actions photo";
-    grid-template-rows: auto 1fr;
+    grid-template-areas: "texte photo" "actions photo" "faits photo";
+    grid-template-rows: auto auto 1fr;
     column-gap: 4rem;
     align-items: start;
     padding-top: 5rem;
@@ -452,6 +508,8 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   }
   .hero-text { align-self: end; }
   .hero-photo { width: 100%; max-width: 22rem; }
+  .hero-facts { align-self: start; }
+  .about-grid { grid-template-columns: 1fr 20rem; gap: 4rem; }
   .skills { grid-template-columns: repeat(3, 1fr); }
 }
 

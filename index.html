@@ -81,20 +81,57 @@
         <a class="btn btn-primary" href="#projets" data-i18n="hero.cta.projects">Voir mes projets</a>
         <a class="btn btn-ghost" href="#contact" data-i18n="hero.cta.contact">Me contacter</a>
       </div>
+      <!-- Trois repères courts, uniquement des faits vérifiables -->
+      <ul class="hero-facts">
+        <li data-i18n="hero.fact1">Application publiée sur Google Play</li>
+        <li data-i18n="hero.fact2">Application mobile et serveur conçus de bout en bout</li>
+        <li data-i18n="hero.fact3">Basé au Burkina Faso</li>
+      </ul>
     </section>
 
     <!-- 2. À PROPOS -->
     <section id="a-propos" aria-labelledby="about-title">
       <h2 id="about-title" data-i18n="about.title">À propos</h2>
-      <p data-i18n="about.p1">
-        Développeur autodidacte, j'ai appris la programmation par la pratique, en construisant
-        un produit réel publié sur Google Play.
-      </p>
-      <p data-i18n="about.p2">
-        Je m'intéresse au développement logiciel, à l'intelligence artificielle,
-        à l'entrepreneuriat technologique et aux technologies spatiales.
-      </p>
-      <p class="placeholder">[À COMPLÉTER : quelques lignes sur ton histoire, si tu le souhaites]</p>
+      <div class="about-grid">
+        <div class="about-text">
+          <p class="about-lead" data-i18n="about.p1">
+            Je suis le fondateur de Burkina Service, une plateforme qui aide la population
+            du Burkina Faso à trouver des professionnels et des entreprises, et qui offre
+            à ces professionnels une vitrine numérique.
+          </p>
+          <p data-i18n="about.p2">
+            J'ai appris la programmation en autodidacte, en construisant ce produit de bout
+            en bout : l'application mobile en Flutter, le serveur en Python, la base de données
+            PostgreSQL, l'hébergement sur Clever Cloud et la publication sur Google Play.
+          </p>
+          <p data-i18n="about.p3">
+            Je développe en grande partie depuis mon téléphone Android, avec Termux.
+          </p>
+
+          <h3 data-i18n="about.storyTitle">Mon histoire</h3>
+          <p class="placeholder">[À COMPLÉTER : comment tu as commencé à programmer, et pourquoi tu as créé Burkina Service]</p>
+
+          <h3 data-i18n="about.ambitionsTitle">Mes ambitions</h3>
+          <p class="placeholder">[À COMPLÉTER : ce que tu veux construire ensuite]</p>
+        </div>
+
+        <!-- Carte « En bref » : liste de définitions (terme → valeur), lue correctement par les lecteurs d'écran -->
+        <aside class="about-card" aria-labelledby="about-card-title">
+          <h3 id="about-card-title" data-i18n="about.card.title">En bref</h3>
+          <dl>
+            <dt data-i18n="about.card.countryLabel">Pays</dt>
+            <dd data-i18n="about.card.country">Burkina Faso</dd>
+            <dt data-i18n="about.card.roleLabel">Rôle</dt>
+            <dd data-i18n="about.card.role">Fondateur et développeur autodidacte</dd>
+            <dt data-i18n="about.card.projectLabel">Projet principal</dt>
+            <dd><a href="#projets">Burkina Service</a></dd>
+            <dt data-i18n="about.card.focusLabel">Domaines</dt>
+            <dd data-i18n="about.card.focus">Développement mobile et backend</dd>
+            <dt data-i18n="about.card.interestsLabel">Intérêts</dt>
+            <dd data-i18n="about.card.interests">Intelligence artificielle, technologies spatiales</dd>
+          </dl>
+        </aside>
+      </div>
     </section>
 
     <!-- 3. PROJETS -->
