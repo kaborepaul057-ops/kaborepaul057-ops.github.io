@@ -388,8 +388,6 @@ main > section > p { max-width: 42rem; color: var(--gris); }
 
 /* --- 8. Projets --- */
 .project-featured {
-  display: grid;
-  gap: 1.5rem;
   margin-top: 1.5rem;
   padding: 1.5rem;
   background: var(--creme);
@@ -397,23 +395,111 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   border-radius: var(--rayon);
   box-shadow: var(--ombre);
 }
-.project-featured > img {
-  width: 7.5rem;
-  padding: 1rem;
+.project-head { display: grid; gap: 1.25rem; }
+.project-logo {
+  width: 6.5rem;
+  padding: .85rem;
   background: var(--blanc);
   border-radius: var(--rayon);
 }
-.project-featured h3 { font-size: 1.8rem; }
-.project-featured p { color: var(--gris); }
-.project-featured ul { padding: 0; margin: 0 0 1.5rem; list-style: none; }
-.project-featured li { position: relative; padding-left: 1.4rem; margin-bottom: .4rem; }
-.project-featured li::before {
-  content: "";
-  position: absolute; left: 0; top: .62em;
-  width: .5rem; height: .5rem;
-  border-radius: 50%;
-  background: var(--vert-500);
+.project-featured h3 { font-size: 2rem; }
+.project-summary { color: var(--gris); max-width: 40rem; }
+
+/* Chaque bloc (problème, fonctions, captures, architecture) séparé par un filet */
+.project-block {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(15, 61, 46, .1);
 }
+.project-block h4 {
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  margin: 0 0 1rem;
+}
+.project-block > p { color: var(--gris); max-width: 42rem; margin: 0; }
+
+/* Fonctions : petites cartes avec un trait vert à gauche */
+.feature-grid {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.feature-grid li {
+  display: grid;
+  gap: .2rem;
+  padding: 1rem 1.1rem;
+  background: var(--blanc);
+  border-radius: 12px;
+  border-left: 3px solid var(--vert-500);
+}
+.feature-grid span { color: var(--gris); font-size: .97rem; }
+
+/* Captures : défilement horizontal avec « aimantation » sur chaque image (scroll-snap).
+   Les marges négatives laissent les images aller jusqu'au bord de la carte. */
+.screens {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 62%;
+  gap: 1rem;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding: .25rem 1.5rem 1rem;
+  margin: 0 -1.5rem;
+  scrollbar-width: thin;
+}
+.screens figure { margin: 0; scroll-snap-align: center; }
+.screens img {
+  border-radius: 22px;
+  border: 6px solid var(--vert-900);     /* cadre façon téléphone */
+  box-shadow: 0 12px 26px rgba(8, 36, 27, .18);
+}
+.screens figcaption {
+  margin-top: .6rem;
+  text-align: center;
+  font-weight: 600;
+  font-size: .95rem;
+}
+.screens-note { font-size: .88rem; color: var(--gris); margin: .25rem 0 0; }
+
+/* Architecture : quatre couches numérotées automatiquement (compteur CSS) */
+.arch {
+  display: grid;
+  gap: .75rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  counter-reset: couche;
+}
+.arch li {
+  counter-increment: couche;
+  position: relative;
+  display: grid;
+  gap: .2rem;
+  padding: 1rem 1.1rem 1rem 3.4rem;
+  background: var(--vert-900);
+  color: var(--clair-sur-vert);
+  border-radius: 12px;
+}
+.arch li::before {
+  content: counter(couche);
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  width: 1.7rem;
+  height: 1.7rem;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: var(--orange-500);
+  color: var(--vert-950);
+  font-weight: 700;
+  font-size: .9rem;
+}
+.arch strong { color: var(--creme); font-size: 1.05rem; }
+.arch li > span:nth-of-type(1) { color: var(--orange-500); font-weight: 600; font-size: .95rem; }
+.arch li > span:nth-of-type(2) { font-size: .95rem; }
 
 /* --- 9. Compétences et centres d'intérêt --- */
 .skills {
@@ -483,7 +569,10 @@ main > section > p { max-width: 42rem; color: var(--gris); }
 /* --- 11. Grands écrans --- */
 @media (min-width: 40rem) {             /* ≈ 640 px : grand téléphone couché, tablette */
   .skills, .contact-list { grid-template-columns: repeat(2, 1fr); }
-  .project-featured { grid-template-columns: auto 1fr; align-items: start; padding: 2rem; }
+  .project-featured { padding: 2rem; }
+  .project-head { grid-template-columns: auto 1fr; align-items: start; gap: 1.75rem; }
+  .feature-grid, .arch { grid-template-columns: repeat(2, 1fr); }
+  .screens { grid-auto-columns: 40%; padding-inline: 2rem; margin-inline: -2rem; }
 }
 
 @media (min-width: 56rem) {             /* ≈ 900 px : ordinateur */
@@ -527,6 +616,10 @@ main > section > p { max-width: 42rem; color: var(--gris); }
     top: calc(var(--hauteur-entete) + 1.5rem);
   }
   .skills { grid-template-columns: repeat(3, 1fr); }
+  .feature-grid { grid-template-columns: repeat(3, 1fr); }
+  .project-featured { padding: 2.5rem; }
+  /* Ordinateur : les 4 captures côte à côte, sans défilement */
+  .screens { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); overflow: visible; padding-inline: 0; margin-inline: 0; }
 }
 
 /* --- 12. Mouvements réduits ---

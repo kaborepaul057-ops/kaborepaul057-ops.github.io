@@ -174,24 +174,121 @@
     <!-- 3. PROJETS -->
     <section id="projets" aria-labelledby="projects-title">
       <h2 id="projects-title" data-i18n="projects.title">Projets</h2>
-      <article class="project project-featured" aria-labelledby="bs-title">
-        <img src="assets/img/burkina-service-logo.png" width="300" height="351"
-             alt="Logo de Burkina Service" data-i18n-attr="alt:projects.bs.logoAlt">
-        <div>
-          <p class="eyebrow" data-i18n="projects.bs.badge">Réalisation principale</p>
-          <h3 id="bs-title">Burkina Service</h3>
-          <p data-i18n="projects.bs.summary">
-            Plateforme numérique de mise en relation entre la population, les professionnels
-            et les entreprises au Burkina Faso. Application publiée sur Google Play.
+      <article class="project-featured" aria-labelledby="bs-title">
+        <!-- En-tête du projet : logo, nom, résumé, lien Google Play -->
+        <header class="project-head">
+          <img class="project-logo" src="assets/img/burkina-service-logo.png" width="300" height="351"
+               alt="Logo de Burkina Service" data-i18n-attr="alt:projects.bs.logoAlt">
+          <div>
+            <p class="eyebrow" data-i18n="projects.bs.badge">Réalisation principale</p>
+            <h3 id="bs-title">Burkina Service</h3>
+            <p class="project-summary" data-i18n="projects.bs.summary">
+              Plateforme numérique de mise en relation entre la population, les professionnels
+              et les entreprises au Burkina Faso. Application Android publiée sur Google Play.
+            </p>
+            <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.burkinaservice.app"
+               target="_blank" rel="noopener" data-i18n="projects.bs.play">Voir sur Google Play</a>
+          </div>
+        </header>
+
+        <!-- Bloc 1 : le problème -->
+        <div class="project-block">
+          <h4 data-i18n="projects.bs.problemTitle">Le problème</h4>
+          <p data-i18n="projects.bs.problem">
+            Trouver rapidement un professionnel près de chez soi passe souvent par le
+            bouche-à-oreille, et beaucoup d'artisans et d'entreprises n'ont aucune présence
+            en ligne. Burkina Service réunit les deux côtés dans une même application.
           </p>
-          <ul data-i18n-list="projects.bs.features">
-            <li>Rechercher des professionnels</li>
-            <li>Découvrir leurs profils et leurs réalisations</li>
-            <li>Contacter directement les prestataires</li>
-            <li>Donner de la visibilité aux entreprises</li>
+        </div>
+
+        <!-- Bloc 2 : les fonctions (toutes vérifiées dans le code de l'application) -->
+        <div class="project-block">
+          <h4 data-i18n="projects.bs.featuresTitle">Ce que fait l'application</h4>
+          <ul class="feature-grid">
+            <li>
+              <strong data-i18n="projects.bs.f1.title">Recherche de proximité</strong>
+              <span data-i18n="projects.bs.f1.text">Par métier, par ville ou autour de soi grâce à la géolocalisation.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.f2.title">Fiches détaillées</strong>
+              <span data-i18n="projects.bs.f2.text">Photos des réalisations, horaires, disponibilité, favoris.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.f3.title">Contact direct</strong>
+              <span data-i18n="projects.bs.f3.text">Appel, WhatsApp ou messagerie intégrée en temps réel.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.f4.title">Espace entreprises</strong>
+              <span data-i18n="projects.bs.f4.text">Services, secteur d'activité et documents officiels de l'entreprise.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.f5.title">Notifications</strong>
+              <span data-i18n="projects.bs.f5.text">Messages, contacts reçus et annonces, directement sur le téléphone.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.f6.title">Paiement mobile</strong>
+              <span data-i18n="projects.bs.f6.text">Abonnements des professionnels payés par mobile money.</span>
+            </li>
           </ul>
-          <a class="btn btn-primary" href="https://play.google.com/store/apps/details?id=com.burkinaservice.app"
-             target="_blank" rel="noopener" data-i18n="projects.bs.play">Voir sur Google Play</a>
+        </div>
+
+        <!-- Bloc 3 : captures. Galerie qui défile horizontalement sur téléphone.
+             tabindex="0" : on peut aussi la faire défiler au clavier. -->
+        <div class="project-block">
+          <h4 data-i18n="projects.bs.screensTitle">Aperçu de l'application</h4>
+          <div class="screens" tabindex="0" role="region" aria-label="Captures d'écran de Burkina Service"
+               data-i18n-attr="aria-label:projects.bs.screensLabel">
+            <figure>
+              <img src="assets/img/app-accueil.jpg" width="480" height="1040" loading="lazy"
+                   alt="Écran d'accueil de Burkina Service" data-i18n-attr="alt:projects.bs.s1.alt">
+              <figcaption data-i18n="projects.bs.s1.caption">Accueil</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/img/app-recherche.jpg" width="480" height="1040" loading="lazy"
+                   alt="Résultats de recherche de plombiers près de soi" data-i18n-attr="alt:projects.bs.s2.alt">
+              <figcaption data-i18n="projects.bs.s2.caption">Recherche près de soi</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/img/app-fiche.jpg" width="480" height="1040" loading="lazy"
+                   alt="Fiche d'un professionnel avec boutons d'appel, de message et WhatsApp" data-i18n-attr="alt:projects.bs.s3.alt">
+              <figcaption data-i18n="projects.bs.s3.caption">Fiche professionnel</figcaption>
+            </figure>
+            <figure>
+              <img src="assets/img/app-entreprises.jpg" width="480" height="1040" loading="lazy"
+                   alt="Liste des entreprises avec distance et services" data-i18n-attr="alt:projects.bs.s4.alt">
+              <figcaption data-i18n="projects.bs.s4.caption">Entreprises</figcaption>
+            </figure>
+          </div>
+          <p class="screens-note" data-i18n="projects.bs.screensNote">
+            Captures réalisées avec des données de démonstration.
+          </p>
+        </div>
+
+        <!-- Bloc 4 : architecture technique (versions lues dans le projet le 14/11/2026) -->
+        <div class="project-block">
+          <h4 data-i18n="projects.bs.archTitle">Architecture technique</h4>
+          <ol class="arch">
+            <li>
+              <strong data-i18n="projects.bs.a1.title">Application mobile</strong>
+              <span>Flutter · Dart · Riverpod</span>
+              <span data-i18n="projects.bs.a1.text">API REST, WebSocket pour la messagerie, géolocalisation, notifications Firebase.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.a2.title">Serveur</strong>
+              <span>Python · FastAPI · SQLAlchemy</span>
+              <span data-i18n="projects.bs.a2.text">API, paiements mobile money, tâches planifiées, panneau d'administration.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.a3.title">Données et hébergement</strong>
+              <span>PostgreSQL · Alembic · Clever Cloud</span>
+              <span data-i18n="projects.bs.a3.text">Base relationnelle, migrations versionnées, hébergement géré.</span>
+            </li>
+            <li>
+              <strong data-i18n="projects.bs.a4.title">Qualité et livraison</strong>
+              <span>Git · GitHub Actions</span>
+              <span data-i18n="projects.bs.a4.text">Tests automatiques du serveur et de l'application, analyse de sécurité, compilation des versions Android.</span>
+            </li>
+          </ol>
         </div>
       </article>
     </section>
