@@ -353,8 +353,18 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   color: var(--encre);
 }
 .about-text h3 { font-size: 1.3rem; margin-top: 2rem; }
+/* Dernière phrase des ambitions mise en valeur, comme une citation */
+.about-text .about-quote {
+  margin-top: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid var(--orange-500);
+  font-family: var(--police-titre);
+  font-size: 1.2rem;
+  color: var(--vert-700);
+}
 
 .about-card {
+  order: -1;                       /* téléphone : le résumé avant le long texte */
   align-self: start;
   padding: 1.5rem;
   background: var(--vert-900);
@@ -510,6 +520,12 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   .hero-photo { width: 100%; max-width: 22rem; }
   .hero-facts { align-self: start; }
   .about-grid { grid-template-columns: 1fr 20rem; gap: 4rem; }
+  /* Ordinateur : carte à droite, qui reste visible pendant le défilement */
+  .about-card {
+    order: 0;
+    position: sticky;
+    top: calc(var(--hauteur-entete) + 1.5rem);
+  }
   .skills { grid-template-columns: repeat(3, 1fr); }
 }
 
