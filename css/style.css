@@ -34,7 +34,7 @@
   --vert-500: #1d6b4f;
   --vert-100: #e3eee8;   /* fonds de pastilles */
   --orange-500: #e8862e; /* accent, utilisé avec parcimonie */
-  --orange-600: #c96f1d; /* orange plus foncé : lisible sur fond clair */
+  --orange-600: #a55b18; /* orange foncé pour petits textes sur fond clair : contraste 4,7 (minimum WCAG 4,5) */
   --creme: #f7f5ef;      /* fond clair, plus doux qu'un blanc pur */
   --blanc: #ffffff;
   --encre: #17211c;      /* texte principal */
@@ -695,7 +695,14 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   font-size: .9rem;
 }
 .site-footer p { margin: 0; }
-.site-footer a { color: var(--creme); margin-left: auto; }
+.site-footer a {
+  color: var(--creme);
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.75rem;             /* zone tactile confortable pour un doigt */
+  padding-inline: .25rem;
+}
 .site-footer a:hover { color: var(--orange-500); }
 
 /* --- 11. Grands écrans --- */

@@ -45,6 +45,18 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
   (français → français, toute autre langue → anglais).
 - Lien à partager à un contact anglophone : `…/?lang=en`.
 
+## Sécurité
+
+La page déclare une politique de sécurité (`Content-Security-Policy`, dans `<head>`) :
+seuls les fichiers du site sont autorisés, plus la ligne de script du `<head>`,
+identifiée par son empreinte sha256. **Si cette ligne est modifiée**, recalculer l'empreinte :
+
+```bash
+printf '%s' "document.documentElement.classList.add('js');" | openssl dgst -sha256 -binary | base64
+```
+
+puis remplacer la valeur `sha256-…` dans `index.html`.
+
 ## Avancement
 
 - [x] Étape 1 — squelette et structure
@@ -52,5 +64,5 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
 - [x] Étapes 3 à 6 — contenu des sections
 - [x] Étape 7 — changement de langue
 - [x] Étape 8 — animations légères
-- [ ] Étape 9 — vérifications (accessibilité, performances, affichage)
+- [x] Étape 9 — vérifications (accessibilité, performances, affichage)
 - [ ] Étape 10 — mise en ligne (seulement sur accord de Paul)

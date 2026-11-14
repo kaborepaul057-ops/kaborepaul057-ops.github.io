@@ -14,14 +14,34 @@
   <meta name="description" content="Portfolio de Paul Kaboré, fondateur et développeur autodidacte de Burkina Service, plateforme de mise en relation au Burkina Faso.">
   <meta name="author" content="Paul Kaboré">
 
-  <!-- Aperçu lors d'un partage (WhatsApp, LinkedIn, Facebook…) -->
+  <!-- Sécurité : le navigateur n'exécute que les fichiers de ce site, plus la petite
+       ligne de script du <head> identifiée par son empreinte (sha256).
+       Si cette ligne change, recalculer l'empreinte (voir README). -->
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+  <!-- Confidentialité : Google Play et WhatsApp ne reçoivent pas l'adresse exacte de la page -->
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <!-- Aperçu lors d'un partage (WhatsApp, LinkedIn, Facebook…).
+       ÉTAPE 10 : remplacer « assets/img/partage.jpg » par l'adresse complète
+       (https://…/assets/img/partage.jpg) et ajouter og:url : WhatsApp et Facebook
+       n'acceptent que des adresses complètes. -->
   <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Paul Kaboré">
   <meta property="og:title" content="Paul Kaboré — Fondateur et développeur autodidacte">
-  <meta property="og:description" content="Fondateur de Burkina Service. Flutter, Python, PostgreSQL.">
-  <meta property="og:image" content="assets/img/paul-kabore.jpg">
-  <meta name="theme-color" content="#0f3d2e">
+  <meta property="og:description" content="Fondateur et développeur de Burkina Service, plateforme de mise en relation au Burkina Faso. Founder &amp; Self-taught Developer.">
+  <meta property="og:locale" content="fr_FR">
+  <meta property="og:locale:alternate" content="en_US">
+  <meta property="og:image" content="assets/img/partage.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Paul Kaboré, fondateur de Burkina Service">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0b2e22">
 
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <!-- Icône pour l'écran d'accueil des iPhone (ils n'acceptent pas le SVG) -->
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <!-- Polices hébergées dans le site : préchargées pour éviter un changement de police visible -->
   <link rel="preload" href="assets/fonts/source-serif-4-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="assets/fonts/source-sans-3-latin.woff2" as="font" type="font/woff2" crossorigin>
@@ -177,7 +197,7 @@
       <article class="project-featured" aria-labelledby="bs-title">
         <!-- En-tête du projet : logo, nom, résumé, lien Google Play -->
         <header class="project-head">
-          <img class="project-logo" src="assets/img/burkina-service-logo.png" width="300" height="351"
+          <img class="project-logo" src="assets/img/burkina-service-logo.jpg" width="300" height="351"
                alt="Logo de Burkina Service" data-i18n-attr="alt:projects.bs.logoAlt">
           <div>
             <p class="eyebrow" data-i18n="projects.bs.badge">Réalisation principale</p>
