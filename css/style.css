@@ -4,7 +4,8 @@
      1. Polices          5. En-tête et menu      9. Compétences, intérêts
      2. Variables        6. Accueil (hero)      10. Contact et pied de page
      3. Base             7. Sections            11. Grands écrans
-     4. Boutons          8. Projets             12. Mouvements réduits
+     4. Boutons          8. Projets             12. Animations
+                                                13. Mouvements réduits
    Approche « mobile d'abord » : les règles de base visent le téléphone,
    les @media (min-width) ajoutent la mise en page des grands écrans.
    ========================================================================== */
@@ -758,7 +759,38 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   .screens { grid-auto-flow: row; grid-template-columns: repeat(4, 1fr); overflow: visible; padding-inline: 0; margin-inline: 0; }
 }
 
-/* --- 12. Mouvements réduits ---
+/* --- 12. Animations (étape 8) ---
+   La classe .reveal est posée par le JavaScript, jamais dans le HTML :
+   sans JavaScript, rien n'est caché. Seuls opacity et transform sont animés :
+   le navigateur les calcule sans recalculer la mise en page (fluide sur téléphone). */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity .6s ease, transform .6s cubic-bezier(.2, .7, .2, 1);
+  transition-delay: calc(var(--rang, 0) * 80ms);  /* cartes d'une même rangée en cascade */
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* Entrée de l'accueil au chargement */
+@keyframes apparition {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: none; }
+}
+.anime .hero-text    { animation: apparition .7s ease both; }
+.anime .hero-photo   { animation: apparition .8s ease .15s both; }
+.anime .hero-actions { animation: apparition .7s ease .25s both; }
+.anime .hero-facts   { animation: apparition .7s ease .35s both; }
+
+/* Ombre de l'en-tête dès qu'on a défilé */
+.site-header { transition: box-shadow .3s ease; }
+.site-header.defile { box-shadow: 0 6px 20px rgba(0, 0, 0, .25); }
+
+/* À l'impression, tout doit être visible */
+@media print {
+  .reveal { opacity: 1 !important; transform: none !important; }
+}
+
+/* --- 13. Mouvements réduits ---
    Si la personne a demandé moins d'animations dans les réglages du téléphone,
    on les coupe toutes (confort et accessibilité). */
 @media (prefers-reduced-motion: reduce) {
@@ -766,5 +798,7 @@ main > section > p { max-width: 42rem; color: var(--gris); }
   *, *::before, *::after {
     transition-duration: .01ms !important;
     animation-duration: .01ms !important;
+    transition-delay: 0s !important;
   }
+  .reveal { opacity: 1; transform: none; }
 }

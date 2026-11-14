@@ -51,6 +51,6 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
 - [x] Étape 2 — identité visuelle, en-tête, menu mobile
 - [x] Étapes 3 à 6 — contenu des sections
 - [x] Étape 7 — changement de langue
-- [ ] Étape 8 — animations légères
+- [x] Étape 8 — animations légères
 - [ ] Étape 9 — vérifications (accessibilité, performances, affichage)
 - [ ] Étape 10 — mise en ligne (seulement sur accord de Paul)

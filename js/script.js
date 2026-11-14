@@ -1,8 +1,8 @@
 /*
  * Comportements du portfolio (JavaScript sans framework).
  * Fait : année du pied de page (étape 1), menu mobile (étape 2),
- * bouton « Copier l'adresse » (étape 6), changement de langue FR / EN (étape 7).
- * À venir : animations à l'apparition (étape 8).
+ * bouton « Copier l'adresse » (étape 6), changement de langue FR / EN (étape 7),
+ * animations légères à l'apparition (étape 8).
  */
 'use strict';
 
@@ -163,3 +163,51 @@ document.querySelectorAll('.lang-switch [data-lang]').forEach((bouton) => {
 
 const depart = langueDeDepart();
 if (depart !== 'fr') appliquerLangue(depart);
+
+// --- Animations légères (étape 8) ---
+// Rien n'est animé si le visiteur a demandé « réduire les animations »
+// ou si son navigateur ne connaît pas IntersectionObserver (très ancien).
+const mouvementReduit = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+if (!mouvementReduit && 'IntersectionObserver' in window) {
+  racine.classList.add('anime'); // déclenche l'entrée de l'accueil (CSS)
+
+  // Éléments qui apparaissent au défilement. Les éléments d'un même groupe
+  // reçoivent un rang (--rang) pour arriver en cascade, l'un après l'autre.
+  const groupes = [
+    'main > section:not(.hero) > h2',
+    'main > section:not(.hero) > p',
+    '.about-text', '.about-card',
+    '.project-head', '.project-block',
+    '.feature-grid > li', '.arch > li', // pas les captures : hors écran sur le côté, elles resteraient vides
+    '.skill-group', '.timeline > li', '.interest-cards > li', '.contact-card',
+  ];
+  const aReveler = [];
+  groupes.forEach((selecteur) => {
+    document.querySelectorAll(selecteur).forEach((element) => {
+      // Rang dans sa rangée : position parmi ses frères, plafonnée pour ne jamais trop attendre
+      const rang = Array.prototype.indexOf.call(element.parentElement.children, element);
+      element.style.setProperty('--rang', String(Math.min(rang, 3)));
+      element.classList.add('reveal');
+      aReveler.push(element);
+    });
+  });
+
+  const observateur = new IntersectionObserver((entrees) => {
+    entrees.forEach((entree) => {
+      if (!entree.isIntersecting) return;
+      entree.target.classList.add('visible');
+      observateur.unobserve(entree.target); // une seule fois par élément
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+
+  aReveler.forEach((element) => observateur.observe(element));
+}
+
+// Ombre de l'en-tête dès qu'on a défilé. { passive: true } : le navigateur
+// sait qu'on ne bloque pas le défilement, il reste parfaitement fluide.
+if (entete) {
+  const majOmbre = () => entete.classList.toggle('defile', window.scrollY > 8);
+  window.addEventListener('scroll', majOmbre, { passive: true });
+  majOmbre();
+}
