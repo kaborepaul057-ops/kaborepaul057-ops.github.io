@@ -38,12 +38,19 @@ Puis ouvrir `http://localhost:8000` dans le navigateur du téléphone.
 - Traduction anglaise : dans `js/i18n.js`, à la même clé que l'attribut `data-i18n`.
 - Les éléments marqués `[À COMPLÉTER]` attendent une information.
 
+## Langues
+
+- Français : écrit dans `index.html`. Anglais : dans `js/i18n.js`.
+- Langue de départ : lien `?lang=en` ou `?lang=fr` > choix mémorisé > langue du téléphone
+  (français → français, toute autre langue → anglais).
+- Lien à partager à un contact anglophone : `…/?lang=en`.
+
 ## Avancement
 
 - [x] Étape 1 — squelette et structure
 - [x] Étape 2 — identité visuelle, en-tête, menu mobile
 - [x] Étapes 3 à 6 — contenu des sections
-- [ ] Étape 7 — changement de langue
+- [x] Étape 7 — changement de langue
 - [ ] Étape 8 — animations légères
 - [ ] Étape 9 — vérifications (accessibilité, performances, affichage)
 - [ ] Étape 10 — mise en ligne (seulement sur accord de Paul)

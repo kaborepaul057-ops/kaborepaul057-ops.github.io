@@ -37,7 +37,7 @@
   <a class="skip-link" href="#contenu" data-i18n="nav.skip">Aller au contenu</a>
 
   <header class="site-header">
-    <a class="brand" href="#accueil" aria-label="Paul Kaboré, retour en haut">PK<span class="brand-dot" aria-hidden="true"></span></a>
+    <a class="brand" href="#accueil" aria-label="Paul Kaboré, retour en haut" data-i18n-attr="aria-label:nav.brand">PK<span class="brand-dot" aria-hidden="true"></span></a>
 
     <nav class="site-nav" aria-label="Navigation principale" data-i18n-attr="aria-label:nav.label">
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="menu"
@@ -423,6 +423,9 @@
           <a class="contact-value" href="mailto:kaborepaul057@gmail.com">kaborepaul057@gmail.com</a>
           <!-- Bouton visible seulement si JavaScript fonctionne (il en a besoin) -->
           <button class="btn-copy" type="button" data-copy="kaborepaul057@gmail.com"
+                  data-msg-ok="Adresse copiée."
+                  data-msg-ko="Copie impossible : sélectionnez l'adresse ci-dessus."
+                  data-i18n-attr="data-msg-ok:contact.copied;data-msg-ko:contact.copyFailed"
                   data-i18n="contact.copy">Copier l'adresse</button>
           <!-- aria-live : le lecteur d'écran annonce « Adresse copiée » -->
           <p class="copy-status" role="status" aria-live="polite"></p>
